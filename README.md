@@ -1,1 +1,1 @@
-# C_Slution
+Tarihli olanlar Ödevler Bilerek Son Tarihleri ile Açıyorum Projeyi
