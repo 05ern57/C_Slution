@@ -59,19 +59,19 @@ Process.Start(new ProcessStartInfo("cmd", $"/c color 0A"));
 //Console.WriteLine(string.Join(" - ",arr2));
 
 
-string[] arr1 = { "el1", "el2", "el3", "el4", "el5", "el6", "el7", "el8", "el9", "el10" };
-Console.WriteLine(arr1.GetValue(5));
-arr1.SetValue("değiştirilmiş eleman", 5);
-Console.WriteLine(arr1.GetValue(5));
-string[] arrCopy = new string[10];
-//arr1.CopyTo(arrCopy, 0);
-arr1.CopyTo(arrCopy, 0); // arr1 array completely copied to the arrCopy and this copy proccess started from the index 0
+//string[] arr1 = { "el1", "el2", "el3", "el4", "el5", "el6", "el7", "el8", "el9", "el10" };
+//Console.WriteLine(arr1.GetValue(5));
+//arr1.SetValue("değiştirilmiş eleman", 5);
+//Console.WriteLine(arr1.GetValue(5));
+//string[] arrCopy = new string[10];
+////arr1.CopyTo(arrCopy, 0);
+//arr1.CopyTo(arrCopy, 0); // arr1 array completely copied to the arrCopy and this copy proccess started from the index 0
 //foreach(string s in arrCopy)
 //{
 //    Console.WriteLine(s);
 //}
 
-int[] num = { 1, 8, 6, 5, 88, 9, 4, 40, 5, 80654, -325,20, 24564 };
+//int[] num = { 1, 8, 6, 5, 88, 9, 4, 40, 5, 80654, -325,20, 24564 };
 ////Array.Sort(num); // Sort reorders the array in an decreasing order.
 ////Array.Reverse(num); // Reverse as we can understand reverse the order of array
 //foreach(int i in num)
@@ -83,11 +83,13 @@ int[] num = { 1, 8, 6, 5, 88, 9, 4, 40, 5, 80654, -325,20, 24564 };
 //if there isn't an element that you entered IndexOf method will return '-1'
 
 
-Array.Resize(ref arrCopy, 15); // we can resize an array with resize array but we used ref and idkw?
-Console.WriteLine(arrCopy.Length);
+//Array.Resize(ref arrCopy, 15); // we can resize an array with resize array but we used ref and idkw?
+//Console.WriteLine(arrCopy.Length);
 
-int sonuc = Array.Find(num, numb => numb < 0); // we added the lambda expression as a second paramater we also call this anonim btw we also have FindAll();
+//int sonuc = Array.Find(num, numb => numb < 0); // we added the lambda expression as a second paramater we also call this anonim btw we also have FindAll();
 
-bool sonuc2 = Array.TrueForAll(num, numb => numb > 0); // as we can also see here we can check the statement of an array with a certain condition this method checks the conditin for
-                                                       // every element of an array
-Console.WriteLine(Convert.ToString(sonuc2));
+//bool sonuc2 = Array.TrueForAll(num, numb => numb > 0); // as we can also see here we can check the statement of an array with a certain condition this method checks the conditin for
+//                                                       // every element of an array
+//Console.WriteLine(Convert.ToString(sonuc2));
+
+
