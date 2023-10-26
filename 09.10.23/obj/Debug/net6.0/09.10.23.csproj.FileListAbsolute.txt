@@ -1,0 +1,14 @@
+C:\Users\ererdogan\Source\Repos\C_Slution\09.10.23\obj\Debug\net6.0\09.10.23.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ererdogan\Source\Repos\C_Slution\09.10.23\obj\Debug\net6.0\09.10.23.AssemblyInfoInputs.cache
+C:\Users\ererdogan\Source\Repos\C_Slution\09.10.23\obj\Debug\net6.0\09.10.23.AssemblyInfo.cs
+C:\Users\ererdogan\Source\Repos\C_Slution\09.10.23\obj\Debug\net6.0\09.10.23.csproj.CoreCompileInputs.cache
+C:\Users\ererdogan\Source\Repos\C_Slution\09.10.23\bin\Debug\net6.0\09.10.23.exe
+C:\Users\ererdogan\Source\Repos\C_Slution\09.10.23\bin\Debug\net6.0\09.10.23.deps.json
+C:\Users\ererdogan\Source\Repos\C_Slution\09.10.23\bin\Debug\net6.0\09.10.23.runtimeconfig.json
+C:\Users\ererdogan\Source\Repos\C_Slution\09.10.23\bin\Debug\net6.0\09.10.23.dll
+C:\Users\ererdogan\Source\Repos\C_Slution\09.10.23\bin\Debug\net6.0\09.10.23.pdb
+C:\Users\ererdogan\Source\Repos\C_Slution\09.10.23\obj\Debug\net6.0\09.10.23.dll
+C:\Users\ererdogan\Source\Repos\C_Slution\09.10.23\obj\Debug\net6.0\refint\09.10.23.dll
+C:\Users\ererdogan\Source\Repos\C_Slution\09.10.23\obj\Debug\net6.0\09.10.23.pdb
+C:\Users\ererdogan\Source\Repos\C_Slution\09.10.23\obj\Debug\net6.0\09.10.23.genruntimeconfig.cache
+C:\Users\ererdogan\Source\Repos\C_Slution\09.10.23\obj\Debug\net6.0\ref\09.10.23.dll

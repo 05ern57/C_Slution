@@ -1,0 +1,14 @@
+C:\Users\ererdogan\source\repos\C_Slution\Training_8\obj\Debug\net6.0\Training_8.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ererdogan\source\repos\C_Slution\Training_8\obj\Debug\net6.0\Training_8.AssemblyInfoInputs.cache
+C:\Users\ererdogan\source\repos\C_Slution\Training_8\obj\Debug\net6.0\Training_8.AssemblyInfo.cs
+C:\Users\ererdogan\source\repos\C_Slution\Training_8\obj\Debug\net6.0\Training_8.csproj.CoreCompileInputs.cache
+C:\Users\ererdogan\source\repos\C_Slution\Training_8\bin\Debug\net6.0\Training_8.exe
+C:\Users\ererdogan\source\repos\C_Slution\Training_8\bin\Debug\net6.0\Training_8.deps.json
+C:\Users\ererdogan\source\repos\C_Slution\Training_8\bin\Debug\net6.0\Training_8.runtimeconfig.json
+C:\Users\ererdogan\source\repos\C_Slution\Training_8\bin\Debug\net6.0\Training_8.dll
+C:\Users\ererdogan\source\repos\C_Slution\Training_8\bin\Debug\net6.0\Training_8.pdb
+C:\Users\ererdogan\source\repos\C_Slution\Training_8\obj\Debug\net6.0\Training_8.dll
+C:\Users\ererdogan\source\repos\C_Slution\Training_8\obj\Debug\net6.0\refint\Training_8.dll
+C:\Users\ererdogan\source\repos\C_Slution\Training_8\obj\Debug\net6.0\Training_8.pdb
+C:\Users\ererdogan\source\repos\C_Slution\Training_8\obj\Debug\net6.0\Training_8.genruntimeconfig.cache
+C:\Users\ererdogan\source\repos\C_Slution\Training_8\obj\Debug\net6.0\ref\Training_8.dll

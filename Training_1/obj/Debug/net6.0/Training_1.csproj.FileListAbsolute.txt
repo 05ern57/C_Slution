@@ -1,0 +1,14 @@
+C:\Users\ererdogan\source\repos\C_Slution\Training_1\bin\Debug\net6.0\Training_1.exe
+C:\Users\ererdogan\source\repos\C_Slution\Training_1\bin\Debug\net6.0\Training_1.deps.json
+C:\Users\ererdogan\source\repos\C_Slution\Training_1\bin\Debug\net6.0\Training_1.runtimeconfig.json
+C:\Users\ererdogan\source\repos\C_Slution\Training_1\bin\Debug\net6.0\Training_1.dll
+C:\Users\ererdogan\source\repos\C_Slution\Training_1\bin\Debug\net6.0\Training_1.pdb
+C:\Users\ererdogan\source\repos\C_Slution\Training_1\obj\Debug\net6.0\Training_1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ererdogan\source\repos\C_Slution\Training_1\obj\Debug\net6.0\Training_1.AssemblyInfoInputs.cache
+C:\Users\ererdogan\source\repos\C_Slution\Training_1\obj\Debug\net6.0\Training_1.AssemblyInfo.cs
+C:\Users\ererdogan\source\repos\C_Slution\Training_1\obj\Debug\net6.0\Training_1.csproj.CoreCompileInputs.cache
+C:\Users\ererdogan\source\repos\C_Slution\Training_1\obj\Debug\net6.0\Training_1.dll
+C:\Users\ererdogan\source\repos\C_Slution\Training_1\obj\Debug\net6.0\refint\Training_1.dll
+C:\Users\ererdogan\source\repos\C_Slution\Training_1\obj\Debug\net6.0\Training_1.pdb
+C:\Users\ererdogan\source\repos\C_Slution\Training_1\obj\Debug\net6.0\Training_1.genruntimeconfig.cache
+C:\Users\ererdogan\source\repos\C_Slution\Training_1\obj\Debug\net6.0\ref\Training_1.dll
