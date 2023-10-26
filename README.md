@@ -1,2 +1,5 @@
-Adı Ödev Son Teslim Tarihi Olan Console Uygulamaları Verilen Ödevleri Yaptığım Dosyalardır.
-Adı Training ile Başlayan Console Uygulamaları ise Kendi Çalışmalarım ve Ders İçindeki Uygulamarımdır.
+Repository'nin örnek dosya kırılımı aşağıdaki gibidir
+-|ay 
+  -|hafta  
+    -|odev 
+ödev dosyası ile aynı kırılım içinde bulunan Training_ dosyaları kendi çalışmalarımı ve aldığım kurslardan örnekler içermektedir
