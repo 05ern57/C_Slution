@@ -1,0 +1,486 @@
+-- select * from Employees;
+
+
+-- SELECT COUNT(EmployeeID) AS [How Many Employees] FROM Employees ;
+
+-- SELECT COUNT(Region)
+-- FROM Employees
+-- WHERE Region IS NULL;
+
+
+-- SELECT FirstName + ' ' +  LastName AS [FullName] From Employees; -- We brought  together first and last name;
+-- SELECT FirstName, LastName, FirstName + ' ' + LastName AS [FullName] FROM Employees;
+-- Select FirstName,LastName,FirstName + ' ' + LastName AS [FullName], Title From Employees Where TitleOfCourtesy = 'Dr.';
+
+-- SELECT  * FROM Employees WHERE TitleOfCourtesy IN ('Ms.', 'Mrs.');
+
+-- SELECT COUNT(*) AS [Male Employee]
+-- FROM Employees
+-- WHERE TitleOfCourtesy = 'Mr.'; -- if ý want to get Two results of different Count fuction condition;
+
+-- SELECT
+--     COUNT(CASE WHEN TitleOfCourtesy = 'Mr.' THEN 3 else NULL END)  AS [Male Personel],
+--     COUNT(CASE WHEN TitleOfCourtesy  IN ('Mrs.', 'Ms.')  THEN 3 ELSE NULL END)  AS  [Female Personel]
+-- FROM Employees;-- With this we can get male and female personel at the same time / even if you say count three it would count one nut you can solve this by multiplying the result.
+
+-- SELECT
+--     COUNT(CASE WHEN TitleOfCourtesy = 'Mr.' THEN 1 else NULL END) *  5 AS [Male Personel],
+--     COUNT(CASE WHEN TitleOfCourtesy  IN ('Mrs.', 'Ms.')  THEN 1 ELSE NULL END) * 1 AS  [Female Personel]
+-- FROM Employees;
+
+
+
+-- -- SELECT COUNT(CASE WHEN Region IS NULL THEN 1 ELSE NULL END ) FROM Employees;
+
+-- SELECT Extension FROM Employees WHERE LEN(Extension) = 3; -- LEN() methods does the same job as the LENGTH  method in javascript;
+
+-- SELECT DATEDIFF(YEAR, BirthDate, GETDATE()) FROM Employees; -- we get the ages of the employees.
+
+-- Select FirstName + LastNAme AS [Employee Name] ,  DATEDIFF(Year, BirthDate, GETDATE()) AS Age FROM Employees ORDER BY Age ASC;
+-- SELECT FirstName + LastName AS [Employee Name] , DATEDIFF(MONTH, BirthDate, GETDATE()) AS [How Long Has Lived] FROM Employees ORDER BY [Employee Name] DESC;
+-- sql use certain ordering standard but it doesn't concern special characters that are used in some countries or other some kind of things but we can declare what type of character we are going to use  by adding kind of things like "Turkish_CI_AS" etc.
+
+
+-- TO FIND THE AVARAGE AGE OF THE EMPLOYEES.
+-- SELECT AVG(DATEDIFF(YEAR, BirthDate, GETDATE())) AS [Avarage Age Of Employees] From Employees; 
+ 
+-- SELECT * FROM Customers WHERE CompanyName LIKE 'A%'; -- we select the customers that their name start with letter a ;
+
+
+-- Select UnitPrice As [Price Without VAT], UnitPrice * 1.18 AS [Market Price] FROM Products;
+
+-- SELECT  ProductName ,UnitPrice AS [Without vat] From Products WHERE  (UnitPrice * 0.18 < 10);
+
+-- SELECT TOP(5) ProductName, UnitPrice FROM Products ORDER BY UnitPrice DESC;
+
+-- SELECT TOP (10) ProductName, UnitPrice, UnitPrice * 1.20 AS [UnitPrice With VAT] FROM Products ORDER BY [UnitPrice With VAT] ASC;
+
+-- SELECT TOP (10) ProductName, UnitPrice, AVG(UnitPrice * 1.20) AS [UnitPrice With VAT] FROM Products ORDER BY UnitPrice ASC; -- it doen't work because AVG return single value from all the value that we choose 
+
+--SELECT TOP(5) AVG(UnitPrice) FROM dbo.Products ORDER BY UnitPrice ASC; -- also this doesn't work too I dont know why.
+
+-- To get the avarage of the Products that is cheapers
+--SELECT AVG(MyTopFive.UnitPrice) AS [Ortalama Fiyat] FROM (SELECT TOP 5 UnitPrice FROM Products) AS MyTopFive;
+
+-- SELECT  ProductName  FROM Products;
+-- SELECT AVG(UnitPrice) AS [AVG VAL] FROM Products;
+
+-- select AVG(fiyatlar.UnitPrice) from 
+-- (   
+--     select top 5 UnitPrice from Products 
+--     ORDER BY UnitPrice ASC
+-- ) as fiyatlar; 
+-- the reason why the previous queries are not working is because of the priority of the proccesses previous queries first calculate the avarage than try the order the cheapest.
+-- And because of this we use sub queries first we send query to cheaper Products than we set this table as reference of the avg query but while you are using the sub queries do not forget the define the table that you send query
+
+-- SELECT MAX(UnitPrice) AS MyResult FROM Products;
+-- SELECT MAX(UnitPrice) AS MyResult FROM (Select Top 15 UnitPrice FROM Products ORDER BY UnitPrice ASC) AS MyTable; -- Ýf we had max ý think we must have min too.
+
+
+--  SELECT ProductName FROM Products Where UnitPrice = MAX(UnitPrice); -- it didn't work.
+--  SELECT * FROM Products Where UnitPrice = (Select MAX(UnitPrice) From Products); -- this works and i have no clue why it is working and the upper line is not;
+-- but ý have guess every time when ý try to use values ý came acroos with problems&errors but when i look at the solution it handles with my problem by using table it send queries to get tables.
+
+
+-- SELECT * FROM Customers;
+
+
+-- SELECT Country, COUNT(*) as CustomerCount
+-- FROM Customers
+-- GROUP BY Country; -- chatGPT's example 
+
+-- Select Country, City, COUNT(*) AS CustomerCount 
+-- From Customers
+-- GROUP BY Country, City; -- this query checks how many times Country and City repeats in all Customers table;
+
+-- SELECT CategoryID, SupplierID, COUNT(*) as ProductCount
+-- FROM Products
+-- GROUP BY CategoryID, SupplierID; -- chatGPT's example 
+
+
+-- SELECT dbo.Categories.CategoryName, COUNT(*) FROM Products GROUP BY CategoryID; 
+
+-- SELECT Categories.CategoryName, COUNT(*) as ProductCount
+-- FROM Products
+-- INNER JOIN Categories ON Products.CategoryID = Categories.CategoryID;
+
+-- SELECT Categories.CategoryName, COUNT(*) as ProductCount
+-- FROM Products
+-- INNER JOIN Categories ON Products.CategoryID = Categories.CategoryID
+-- GROUP BY Categories.CategoryName;
+
+-- DISTINCT keyword is used to filters the repeated values and show the list without repeated values. we add this keyword right after SELECT then Column name comes after it;
+
+-- Select Categories.CategoryName, Count(*) AS [Total Count] 
+-- FROM Products
+-- INNER JOIN Categories ON Products.CategoryID = Categories.CategoryID
+-- GROUP BY Categories.CategoryName;
+
+-- INNER JOIN Categories ON Products.CategoryID = Categories.CategoryID -- in this part of this query  we declare the related part of two tables than with GROUP BY we define where the COUNT function will count.
+
+-- SELECT * FROM Products;
+
+-- SELECT ProductName FROM Products
+-- WHERE UnitPrice= (SELECT MAX(UnitPrice) From Products); 
+
+-- SELECT Country, COUNT(*) AS Customers FROM Customers GROUP BY Country; 
+
+-- SELECT Categories.CategoryName, COUNT(*) AS [Total Count] 
+-- FROM Products 
+-- INNER JOIN Categories ON Products.CategoryID = Categories.CategoryID
+-- GROUP BY Categories.CategoryName;-- we wanted to count the products that are in different category;
+
+-- SELECT Customers.Country, Customers.City , Count(*) AS [Orders] 
+-- FROM Orders
+-- INNER JOIN Customers ON Customers.CustomerID = Orders.CustomerID
+-- GROUP BY Customers.Country, Customers.City; 
+
+-- SELECT * From Employees INNER JOIN Orders ON Employees.EmployeeID = Orders.EmployeeID;
+
+-- SELECT Employees.FirstName + Employees.LastName AS Employee,
+--     Count(Orders.) AS Sellings,
+-- FROM Orders
+-- INNER JOIN Employees ON Employees.EmployeeID = Orders.EmployeeID
+-- INNER JOIN OrderDetails ON OrderDetails.OrderID = Orders.OrderID
+-- GROUP BY Employees.EmployeeID; -- my useless query.
+
+-- SELECT e.FirtName + ' ' + e.LastName AS FullName 
+-- FROM Employees e 
+-- INNER JOIN Orders o ON o.EmployeeID = e.EmployeeID
+-- INNER JOIN OrderDetails od ON od.OrderID = o.OrderID;
+
+-- SELECT 
+-- e.FirstName + ' ' + e.LastName AS FullName,  
+-- SUM(od.Quantity * od.UnitPrice)
+-- FROM Employees e 
+-- INNER JOIN Orders o ON o.EmployeeID = e.EmployeeID
+-- INNER JOIN OrderDetails od ON od.OrderID = o.OrderID
+-- GROUP BY e.FirstName + ' ' + e.LastName;
+
+
+
+-- SELECT SUM(Quantity) AS [TotalQuantity]
+-- FROM OrderDetails;
+
+-- SELECT * FROM (SELECT SUM(Freight) AS [Toplam Nakliye Ücreti] From Orders) AS [Toplam Nakliye Tablosu]; -- these two queries does not working, I guess i made some tries.
+
+-- SELECT ShipCountry, SUM(Freight) From Orders GROUP BY ShipCountry;-- we calculate the freight of every country that we shipped our product.
+-- the main purpose of the SUM function is it calculates the all numbers in the Column that we enter and gives us the total.
+
+
+-- SELECT  * From Employees INNER JOIN Orders  ON Orders.EmployeeID = Employees.EmployeeID;
+
+-- INNER JOIN checks the values that we specify that are 
+
+
+-- Select e1.FirstName + ' ' + e1.LastName AS Manager, e2.FirstName + ' ' + e2.LastName AS Employee
+-- FROM Employees e1 
+-- INNER JOIN Employees e2 ON e1.EmployeeID = e2.ReportsTo;-- we can also write this like that 
+-- Select 
+--     e1.FirstName + ' ' + e1.LastName AS Manager, 
+--     e2.FirstName + ' ' + e2.LastName AS Employee,
+--     e2.ReportsTo
+-- From Employees e1, Employees e2 
+-- Where e1.EmployeeID = e2.ReportsTo; --we can still get the same result with this actually more than this.
+
+
+-- select * from Employees where ReportsTo = {};
+-- update Employees set ReportsTo = 5 where ReportsTo = 2
+
+-- SELECT c.CustomerID, c.CompanyName, SUM(o.OrderID) AS TotalOrders
+-- FROM Customers AS c
+-- LEFT JOIN Orders  AS o ON c.CustomerID = o.CustomerID 
+-- GROUP BY c.CustomerID, c.CompanyName
+-- HAVING SUM(o.OrderID) IS NULL;
+
+-- SELECT c.CustomerID, c.CompanyName, SUM(o.OrderID) AS [Total Order]
+-- From Customers c
+-- LEFT JOIN Orders o ON c.CustomerID = o.CustomerID
+-- GROUP BY c.CustomerID, c.CompanyName
+-- HAVING SUM(o.OrderID) BETWEEN 10000 AND 30000; -- When we use WHERE we can't use agrregate functions but in case we can use HAVING instead HAVING clause is the clause that we use with the GROUP BY Clause  
+
+
+-- Select CustomerID, ShipVia, ShipAddress, 
+--     (Select AVG(Freight) FROM Orders) AS [Avarage Freight Cost] 
+-- FROM Orders; 
+
+-- SELECT ShipVia, ShipAddress, Freight , (Select AVG(Freight)FROM Orders) From Orders Where Freight > (Select AVG(Freight) From Orders);
+
+-- SELECT DISTINCT FirstName, LastName From Employees Where EmployeeID  IN (SELECT EmployeeID FROM Employees BETWEEN 5  ) ;  
+-- SELECT 
+--     OBJECT_NAME(object_id) AS TableName,
+--     name AS IndexName,
+--     type_desc AS IndexType
+-- FROM sys.indexes
+-- WHERE OBJECT_NAME(object_id) = 'Customers'; -- we use this whenever we want to check our INDEXES. I mentioned that because it is quite different than the MySQL or MsSQL
+
+-- CREATE TABLE TriggerDeneme (
+--     [EmployeeID] INT PRIMARY KEY IDENTITY(1,1),
+--     [E_Name] NVARCHAR(10),
+--     [Surname] NVARCHAR(15), 
+--     [HourlyPay] INT,
+--     [SALARY] INT
+-- )
+
+-- -- ALTER TABLE TriggerDeneme RENAME COLUMN [Name] to [E_Name];-- Normaly in MySQL or MsSQL we can use this query to rename our COLUMN but we use this in azure data studio instead
+-- -- EXEC sp_rename  'TriggerDeneme.Name', 'E_Name', 'COLUMN';
+-- EXEC sp_rename  'TriggerDeneme.Surname', 'E_Surname', 'COLUMN';
+
+
+
+-- INSERT INTO TriggerDeneme  (
+--     [E_Name],
+--     [E_Surname],
+--     [HourlyPay],
+--     [SALARY]
+-- ) 
+-- VALUES(
+--     'Hikmet', 'Karakus', 20, 8*20 
+-- ),
+-- (
+--     'Halis', 'Huner', 30, 8*30 
+-- ),
+-- (
+--     'Deniz', 'Gogus', 20, 8*20 
+-- ),
+-- (
+--     'Eren', 'Erdogan', 10, 8*10 
+-- );
+-- We have created a Table is called TriggerDeneme then we made same upgrades in Column name than we add some row in that table now we will use trigger with this table.
+
+-- UPDATE TriggerDeneme SET SALARY = 8*30*10 WHERE EmployeeID = 4;  
+
+-- EXEC sp_rename  'TriggerDeneme.SALARY', 'Salary', 'COLUMN';
+
+
+
+
+-- CREATE TRIGGER before_hourly_pay_update
+-- BEFORE UPDATE ON TriggerDeneme 
+-- FOR EACH ROW
+-- SET SALARY = (HourlyPay * 240);-- in MySQL we can create a trigger like this but in ssms we don't have some these terms. Instead of this 
+
+-- Create TRIGGER before_hourly_pay_update 
+-- ON TriggerDeneme 
+-- INSTEAD OF UPDATE 
+-- AS 
+-- BEGIN
+--     UPDATE TriggerDeneme
+--     SET Salary = 
+
+-- CREATE TABLE AuditLog (
+--     [AuditLogId] INT  PRIMARY KEY IDENTITY(1,1),
+--     [TableName] VARCHAR(100),
+--     [ColumnName] VARCHAR(100),
+--     [RowId] INT,
+--     [OldValue] VARCHAR(150),
+--     [NewValue] VARCHAR(150),
+--     [ChangeDate] DATETIME DEFAULT CURRENT_TIMESTAMP
+-- );
+
+-- CREATE TRIGGER B
+-- ON TriggerDeneme
+-- AFTER UPDATE
+-- AS
+-- BEGIN
+--     SET NOCOUNT ON;
+
+--     IF UPDATE(HourlyPay)
+--     BEGIN
+--         -- TRANSACTION OF STORAGE UPDATED ROWS
+--         DECLARE @OldHourlyPay DECIMAL(10, 2);
+--         DECLARE @NewHourlyPay DECIMAL(10, 2);
+--         DECLARE @RowID INT;
+
+--         SELECT @RowID = inserted.EmployeeID, @OldHourlyPay = deleted.HourlyPay, @NewHourlyPay = inserted.HourlyPay
+--         FROM inserted
+--         INNER JOIN deleted ON inserted.EmployeeID = deleted.EmployeeID;
+
+--         -- Güncelleme sorgusunu çalýþtýr
+--         -- DECLARE @Sql NVARCHAR(MAX);
+--         -- SET @Sql = N'UPDATE TriggerDeneme SET Salary = ' + CAST(@NewHourlyPay * 8 * 30 AS NVARCHAR(150)) + N' WHERE EmployeeID = ' + CAST(@RowID AS NVARCHAR(150));
+--         -- EXEC sp_executesql @Sql; -- we made a dynamic query here
+
+--         -- AuditLog'a kayýt ekle
+--         INSERT INTO AuditLog (
+--             [TableName], 
+--             [ColumnName],
+--             [RowId],
+--             [OldValue],
+--             [NewValue]
+--         )
+--         VALUES (
+--             'TriggerDeneme',
+--             'HourlyPay',
+--             @RowID,
+--             CAST(@OldHourlyPay AS NVARCHAR(150)), 
+--             CAST(@NewHourlyPay AS NVARCHAR(150))
+--         )
+--     END;
+-- END;
+
+
+-- update TriggerDeneme set HourlyPay=40 where EmployeeID=4
+-- CREATE TRIGGER before_hourly_pay_update
+-- ON TriggerDeneme
+-- INSTEAD OF UPDATE
+-- AS
+-- BEGIN
+--     SET NOCOUNT ON;
+--     UPDATE TriggerDeneme
+--     Set TriggerDeneme.Salary = ()
+
+
+-- SELECT SUM((UnitPrice * Quantity) - (UnitPrice * Quantity * Discount)) AS [MyTotalProfit]
+-- FROM [OrderDetails];
+
+-- SELECT [FirstName], [LastName] FROM Employees Where MONTH(BirthDate) = MONTH(GETDATE()) and DAY(BirthDate) = DAY(GETDATE());-- we don't have any employee that born today so we will try this.
+
+-- SELECT [FirstName], [LastName], [BirthDate] FROM Employees Where MONTH(BirthDate) = 12 and DAY(BirthDate) = 08;
+
+-- SELECT 
+--     a.[FirstName] + ' ' + a.[LastNAme] AS [Manager],
+--     a.[EmployeeID] AS [ManagerID],
+--     b.[FirstName] + ' ' +  b.[LastName] AS [Employee],
+--     b.[ReportsTo] AS [ID of the Manager of Employee]
+-- From Employees a
+-- INNER JOIN Employees b ON a.EmployeeID = b.ReportsTo;
+
+-- SELECT * FROM [Orders] Where EmployeeID IS NULL;
+
+-- SELECT e.[FirstName] + ' ' + e.[LastName] AS [Saler], SUM(od.Quantity * od.UnitPrice)
+-- FROM Orders o 
+-- INNER JOIN Employees e ON e.[EmployeeID] = o.EmployeeID
+-- INNER JOIN OrderDetails od ON od.[OrderID] = o.[OrderID]
+-- GROUP BY o.EmployeeID;-- It didn't work.
+
+-- SELECT e.[FirstName] + ' ' + e.[LastName] AS [Saler],
+--     SUM(od.Quantity * od.UnitPrice) [Sale]
+-- FROM Orders o 
+-- INNER JOIN OrderDetails od ON od.OrderID = o.OrderID
+-- INNER JOIN Employees e ON e.EmployeeID = o.EmployeeID
+-- GROUP BY e.[FirstName],e.[LastName]; -- It didn't work because ý guess we can only group by the columns that we SELECTED if we try something else than we can't make this query work
+
+-- Select DISTINCT ShipCountry From Orders; -- We checked which countries that we Shipp products
+
+
+-- Select p.[ProductName], od.[Quantity];
+
+-- select p.ProductName,SUM(od.Quantity) as Adet,sum(od.Quantity*od.UnitPrice*(1-od.Discount)) as Gelir
+
+-- from Products p
+
+-- inner join [OrderDetails] od
+
+-- on p.ProductID=od.ProductID
+
+-- group by p.ProductName
+
+-- order by 3 desc -- I couldn't do at first because I couldn't read the table right. After I looked for a long time ý solve the questions in my head why we do this like that.
+
+
+-- Products - Categories - OrderDetails
+-- Select c.CategoryName AS [Category Name],
+--      SUM(od.Quantity * od.UnitPrice * (1- od.Discount)) AS Profit
+-- FROM Categories c
+-- INNER JOIN Products p ON p.CategoryID = c.CategoryID
+-- INNER JOIN OrderDetails od ON od.ProductID = p.ProductID
+-- GROUP BY c.CategoryName
+-- ORDER BY 2 DESC;
+
+-- Select c.CategoryName As [Category Name],
+--     SUM(od.Quantity) AS [Quantity of Selled Products]
+-- FROM Categories c 
+-- INNER JOIN Products p ON p.CategoryID = c.CategoryID
+-- INNER JOIN [OrderDetails] od ON od.ProductID = p.ProductID
+-- GROUP BY c.CategoryName
+-- ORDER BY 2 DESC;
+
+-- Employees - OrderDetails - Orders - Products
+-- SELECT CONCAT(e.FirstName, ' ', e.LastName) AS [FullName],
+--     p.ProductName,
+--     SUM(od.Quantity) AS [Total Selled Quantity],
+--     SUM(od.Quantity * od.UnitPrice * (1 - od.Discount)) As Profit
+-- FROM Orders o 
+-- INNER JOIN Employees e ON e.EmployeeID = o.EmployeeID
+-- INNER JOIN [OrderDetails] od ON od.OrderID = o.OrderID
+-- INNER JOIN Products p ON p.ProductID = od.ProductID
+-- GROUP BY e.FirstName,e.LastName,p.ProductName
+-- ORDER BY 4 DESC;
+
+-- Shippers - Orders
+-- Select s.CompanyName, SUM(o.Freight) AS [Total Money Given]
+-- FROM Orders o 
+-- INNER JOIN Shippers s On s.ShipperID = o.ShipVia
+-- GROUP BY s.CompanyName
+-- ORDER BY 2 DESC;
+
+-- Select [FirstName], [LastName], [Notes]
+-- FROM Employees
+-- Where [Notes] LIKE '%toast%';
+
+-- SELECT s.CompanyName, p.ProductName, SUM(od.Quantity) AS [Total Quantity Selled]
+-- FROM Products p 
+-- INNER JOIN Suppliers s ON s.SupplierID = p.SupplierID
+-- INNER JOIN [OrderDetails] od ON p.ProductID = od.ProductID
+-- GROUP BY s.CompanyName, p.ProductName;
+
+-- SELECT c.CompanyName, SUM(od.Quantity) AS [Bought Product Quantity],
+--     SUM(od.Quantity * od.UnitPrice * (1 - od.Discount)) AS [Money that we Earn from it]
+-- From Orders o 
+-- INNER JOIN Customers c ON c.CustomerID = o.CustomerID
+-- INNER JOIN OrderDetails od ON od.OrderID = o.OrderID
+-- GROUP BY c.CompanyName
+-- ORDER BY 3 DESC; 
+
+-- SELECT TOP (1) c.CompanyName, SUM(od.Quantity) AS [Bought Product Quantity],
+--     SUM(od.Quantity * od.UnitPrice * (1 - od.Discount)) AS [Money that we Earn from it]
+-- From Orders o 
+-- INNER JOIN Customers c ON c.CustomerID = o.CustomerID
+-- INNER JOIN OrderDetails od ON od.OrderID = o.OrderID
+-- GROUP BY c.CompanyName
+-- ORDER BY 3  DESC; 
+
+-- Select [OrderID] , 
+--     DATEDIFF (month , ShippedDate, RequiredDate) AS [delayed shipment for months],
+--     DATEDIFF (day ,ShippedDate, RequiredDate)  AS [delayed shipment for day]
+-- FROM Orders
+-- WHERE DATEDIFF (DAY , ShippedDate, RequiredDate) > 0;
+
+
+-- Select [OrderID] ,
+--     DATEDIFF (month , ShippedDate, RequiredDate) AS [delayed shipment for months],
+--     DATEDIFF (day ,ShippedDate, RequiredDate)  AS [delayed shipment for day]
+-- FROM Orders
+-- WHERE MONTH(RequiredDate)< MONTH(ShippedDate) OR DAY(RequiredDate)< DAY(ShippedDate);
+
+
+-- SELECT p.ProductName, SUM(od.Quantity * od.UnitPrice) AS [Total Selling] , (Select AVG(Quantity * UnitPrice) From OrderDetails)
+-- FROM Products p
+-- INNER JOIN OrderDetails od ON p.ProductID = od.ProductID
+-- GROUP BY p.ProductName
+-- HAVING Sum(od.Quantity * od.UnitPrice) > (Select AVG(Quantity * UnitPrice) From OrderDetails)
+-- ORDER BY 2 ASC;
+
+-- SELECT *, (Select AVG(Quantity) FROM OrderDetails) FROM OrderDetails od 
+-- WHERE Quantity > (Select AVG(Quantity) FROM OrderDetails)
+-- ORDER BY od.Quantity DESC;
+
+
+-- SELECT *, (Select AVG(Quantity) FROM OrderDetails) FROM OrderDetails od 
+-- WHERE Quantity < (Select AVG(Quantity) FROM OrderDetails)
+-- ORDER BY od.Quantity DESC;
+
+
+
+Select * FROM TriggerDeneme;
+SELECT * FROM AuditLog;
+SELECT * FROM Categories;
+SELECT * from Employees;
+SELECT * from Products;
+SELECT * FROM Customers;
+SELECT * from Orders;
+SELECT * from OrderDetails; 
+SELECT * from Shippers;
+SELECT * from Suppliers;
+SELECT * FROM EmployeeTerritories;
